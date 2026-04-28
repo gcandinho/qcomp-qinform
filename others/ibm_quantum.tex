@@ -4,6 +4,8 @@
 \usepackage{setspace}
 \onehalfspacing
 \newcommand{\ket}[1]{\left|#1\right\rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\braket}[2]{\langle #1 \mid #2 \rangle}
 
 \begin{document}
 
@@ -71,6 +73,33 @@ Since those vectors form a basis, of course, any column vector can be expressed 
 
 There's a final remark concerning measurements of probabilistic states, from theory of information and a little of probability: the probability vector represents the observer's knowledge of the system, not the actual physical state itself. While the probability of each classical state may be available to everyone, if for instance, the system is a coin, it will have two states: heads, tails. If you flip the coin but before you look, the probability vector will be $\frac{1}{2}\ket{0} + \frac{1}{2}\ket{1}$ (here I'm saying that $0$ is heads and $1$ is tails). If you look, let's say the coin is with tails up, then you can update the probability vector, which represents your knowledge of the system state (the coin), to $\ket{1}$. On the other hand, a friend of yours may arrive after you have seen the result; for your friend, the probability state, which represents the knowledge of this system, will still be: $\frac{1}{2}\ket{0} + \frac{1}{2}\ket{1}$.
 
-\subsection{Classical Operations}
+\section{Classical Operations}
+In this subsection, the course defines what kind of operations can be performed on classical systems.
+
+\subsection{Deterministic operations}
+A deterministic operation is a operation where each classical state $a \in \Omega$ is transformed in $f(a)$ for some $f: \sum \rightarrow \sum$.
+
+\textbf{Example:} if $\Omega = \{0, 1\}$, there are four functions of this form. Two of them are constants (the value of $a$ doesn't change $f(a)$), one is the identity and the last one is the NOT function. 
+
+The action of deterministic operation on probabilistic states can be represented by matrix-vector multiplication. The $M$ matrix that represents a given function $f: \Omega \rightarrow \Omega$ is the one that satisfies:
+$$
+M\ket{a} = \ket{f(a)}, \forall a \in \Omega
+$$
+Matrices that represent deterministic operations always have exactly one $1$ in each column, and $0$ for all other entries.
+
+There is a convenient way to represent matrices of these and other forms makes use of analogous notation for row vectors: we denote $\bra{a}$ the row vector having a $1$ in the entry corresponding to $a$ and zero for all other entries, for each $a \in \Omega$
+\textbf{Example:} if $\Omega = \{0, 1\}$, then
+$$
+\bra{0} = \begin{pmatrix} 1 & 0 \end{pmatrix} \quad \text{and} \quad \bra{1} = \begin{pmatrix} 0 & 1 \end{pmatrix}
+$$
+By performing the matrix multiplication of $\ket{b}\bra{a}$, we obtain a square matrix having a $1$ in the entry corresponding to the pair $(b,a)$. Using this notation we may express the matrix $M$ that corresponds to any function $f: \Omega \rightarrow \Omega$ as:
+$$
+M = \sum_{a\in\Omega}\ket{f(a)}\bra{a}
+$$
+With this in mind, we can see:
+$$
+M\ket{b} = (\sum_{a\in\Omega}\ket{f(a)}\bra{a})\ket{b} = \sum_{a\in\Omega}\ket{f(a)}\braket{a}{b} = \ket{f(b)}
+$$
+for each $b \in \Omega$.
 
 \end{document}

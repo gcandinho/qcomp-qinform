@@ -1,0 +1,76 @@
+\documentclass[12pt]{article} % Larger base font
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{setspace}
+\onehalfspacing
+\newcommand{\ket}[1]{\left|#1\right\rangle}
+
+\begin{document}
+
+\section{Classical Information}
+
+\subsection{Classical States and probability vectors}
+\textbf{Definition:} Let $X$ be a system and $\Omega$ the set of classical states of $X$. For classical systems and the corresponding classical states, we make the assumption that $\Omega$ is finite and non-empty.
+
+\textbf{Examples:}
+\begin{enumerate}
+    \item If $X$ is a bit, then $\Omega = \{0, 1\}$.
+    \item If $X$ is a six-sided dice, then $\Omega = \{1, 2, 3, 4, 5, 6\}$.
+    \item If $X$ is an electric fan switch, then $\Omega = \{0, 1, 2, 3\}$. Where $0$ is off, $1, 2, 3$ is low, medium and high, respectively. 
+\end{enumerate}
+
+A probabilistic state is a way to represent what's the probability that the system is in one of its classical states.
+
+\textbf{Example:} Suppose $X$ is a bit then, let's say that from previous experiences and/or behaviour we know that there is a probability of $2/3$ that the system is at the state $0$ and, of course, $1/3$ that it's $1$. We may represent these beliefs as:
+\[
+\Pr(X=0) = \frac{2}{3} \quad \text{and} \quad \Pr(X=1) = \frac{1}{3}.
+\]
+
+A more succinct way to represent this probabilistic state is by a column vector:
+\[
+\begin{pmatrix}
+\frac{2}{3} \\
+\frac{1}{3}
+\end{pmatrix}
+\]
+The natural way to write such probability states is through a column vector that satisfies:
+\begin{enumerate}
+    \item All entries of the vector are \textit{nonnegative real numbers}.
+    \item The sum of the entries is equal to $1$.
+\end{enumerate}
+We will refer to vectors of this form as probability vectors.
+
+The previous column vector is a probability vector, because:
+\begin{enumerate}
+    \item It's a column vector.
+    \item All entries are \textit{nonnegative real numbers}: 
+    \[
+    \frac{2}{3} \geq 0 \quad \text{and} \quad \frac{1}{3} \geq 0
+    \]
+    \item The sum of the entries is equal to $1$:
+    \[
+    \frac{2}{3} + \frac{1}{3} = 1
+    \]
+\end{enumerate}
+
+\subsection{Measuring probabilistic states}
+Measuring a system is to recognize whichever classical state it is in without ambiguity. We can't ``see'' a probabilistic state of a system; when we look at it, we just see one of the possible classical states.
+
+When we measure a system, we update our knowledge of it, and therefore the probabilistic state we associate with it can change. Let's suppose that $X$ is in the classical state $a \in \Omega$, the new probability vector representing our knowledge of the state $X$ becomes the vector having a $1$ in the entry corresponding to $a$ and $0$ for all other entries. This vector we shall denote with $\ket{a}$ read as ``ket a''. Vectors of this sort are also called \textit{standard basis vectors}.
+
+\textbf{Example:} Assuming that $X$ is a bit, the standard basis vectors are given by:
+\[
+\ket{0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \text{and} \quad \ket{1} = \begin{pmatrix} 0 \\ 1\end{pmatrix}
+\]
+Since those vectors form a basis, of course, any column vector can be expressed as a linear combination of these two vectors.
+
+\textbf{Example:}
+\[
+\begin{pmatrix} \frac{2}{3} \\ \frac{1}{3} \end{pmatrix} = \frac{2}{3}\ket{0} + \frac{1}{3}\ket{1}
+\]
+
+There's a final remark concerning measurements of probabilistic states, from theory of information and a little of probability: the probability vector represents the observer's knowledge of the system, not the actual physical state itself. While the probability of each classical state may be available to everyone, if for instance, the system is a coin, it will have two states: heads, tails. If you flip the coin but before you look, the probability vector will be $\frac{1}{2}\ket{0} + \frac{1}{2}\ket{1}$ (here I'm saying that $0$ is heads and $1$ is tails). If you look, let's say the coin is with tails up, then you can update the probability vector, which represents your knowledge of the system state (the coin), to $\ket{1}$. On the other hand, a friend of yours may arrive after you have seen the result; for your friend, the probability state, which represents the knowledge of this system, will still be: $\frac{1}{2}\ket{0} + \frac{1}{2}\ket{1}$.
+
+\subsection{Classical Operations}
+
+\end{document}
